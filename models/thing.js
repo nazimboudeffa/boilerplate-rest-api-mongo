@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 
-const JobSchema = new mongoose.Schema({
+const ThingSchema = new mongoose.Schema({
     title: {
         type: String,
         required: true,
@@ -24,6 +24,6 @@ const JobSchema = new mongoose.Schema({
     }
 })
 
-let JobModel = mongoose.model('Job', JobSchema);
+let ThingModel = mongoose.model('Thing', ThngSchema);
 
-export default JobModel;
+export default ThingModel;
