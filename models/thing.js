@@ -24,6 +24,6 @@ const ThingSchema = new mongoose.Schema({
     }
 })
 
-let ThingModel = mongoose.model('Thing', ThngSchema);
+let ThingModel = mongoose.model('Thing', ThingSchema);
 
 export default ThingModel;

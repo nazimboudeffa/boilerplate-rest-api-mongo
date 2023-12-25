@@ -1,7 +1,7 @@
 import 'dotenv/config'
 import express from 'express';
 import { connectDB } from './db/connection.js';
-import { jobsRoutes } from './routes/jobs.js';
+import { thingsRoutes } from './routes/things.js';
 
 const app = express();
 const port = process.env.PORT || 9000;
@@ -10,9 +10,9 @@ app.use(express.json());
 
 //routes
 app.get('/health', (req, res)=> {
-    res.send('Jobs API is healthy');
+    res.send('Rest API is healthy');
 });
-app.use('/', jobsRoutes);
+app.use('/', thingsRoutes);
 
 const start = async () => {
     console.log("Starting server...");

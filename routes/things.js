@@ -6,4 +6,4 @@ const router = express.Router();
 router.route('/things').get(getThings)
 router.route('/create').post(createThing)
 
-export {router as thingRoutes}
+export {router as thingsRoutes}
