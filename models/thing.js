@@ -9,14 +9,10 @@ const ThingSchema = new mongoose.Schema({
         type: String,
         default: "",
     },
-    handle: {
+    slug: {
         type: String,
         required: true,
         unique: true
-    },
-    published: { 
-        type: Boolean, 
-        default: false 
     },
     createdAt: { 
         type: Date, 
