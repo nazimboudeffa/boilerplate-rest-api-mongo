@@ -14,6 +14,7 @@ app.use(express.json());
 app.get('/health', (req, res)=> {
     res.send('Rest API is healthy');
 });
+
 app.use('/', thingsRoutes);
 
 app.use('/users', usersRoutes);

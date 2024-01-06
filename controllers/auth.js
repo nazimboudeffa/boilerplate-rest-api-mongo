@@ -9,31 +9,8 @@ import config from "../config/index.js";
 const generateToken = (id) => {
     return jwt.sign({ id }, config.jwtSecret, { expiresIn: "30d" });
   };
-  
-const loginUser = asyncHandler(async (req, res) => {
-    const { email, password } = req.body;
 
-    if (!email || !password) {
-    res.status(400);
-    throw new Error("Please add all fields");
-    }
-
-    // Check for user email
-    const user = await UserModel.findOne({ email });
-
-    if (user && (await bcrypt.compare(password, user.password))) {
-    res.json({
-        _id: user.id,
-        email: user.email,
-        token: generateToken(user._id),
-    });
-    } else {
-    res.status(400);
-    throw new Error("Invalid credentials");
-    }
-});
-
-const registerUser = asyncHandler(async (req, res) => {
+const register = asyncHandler(async (req, res) => {
     const { body } = req
     const schema = Joi.object().keys({
       email: Joi.string().required(),
@@ -81,4 +58,43 @@ const registerUser = asyncHandler(async (req, res) => {
     }
 });
 
-export { loginUser, registerUser };
+const login = asyncHandler(async (req, res) => {
+  const { email, password } = req.body;
+
+  if (!email || !password) {
+  res.status(400);
+  throw new Error("Please add all fields");
+  }
+
+  // Check for user email
+  const user = await UserModel.findOne({ email });
+
+  if (user && (await bcrypt.compare(password, user.password))) {
+  res.json({
+      _id: user.id,
+      email: user.email,
+      token: generateToken(user._id),
+  });
+  } else {
+  res.status(400);
+  throw new Error("Invalid credentials");
+  }
+});
+
+const logout = asyncHandler(async (req, res) => {
+    res.send("Logout");
+});
+
+const forgotPassword = asyncHandler(async (req, res) => {
+});
+
+const resetPassword = asyncHandler(async (req, res)=> {
+});
+
+const sendVerificationEmail = asyncHandler(async (req, res) => {
+});
+
+const verifyEmail = asyncHandler(async (req, res) => {
+});
+
+export { login, register };
