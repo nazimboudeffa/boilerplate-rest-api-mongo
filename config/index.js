@@ -13,7 +13,7 @@ const config = {
   /**
    * Your favorite port
    */
-  port: parseInt(process.env.PORT, 10),
+  port: parseInt(process.env.PORT, 9000),
 
   databaseURL: process.env.DATABASE_URL,
   redisURI: process.env.REDIS_URI,
